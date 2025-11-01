@@ -1,11 +1,11 @@
 Config = {
-  ResourceName = 'IAManager-ValStudios',-- mets EXACTEMENT le nom du dossier ressource
-  OllamaURL    = 'http://192.168.1.2:30768', -- ex: http://192.168.1.10  -- Caddy
+  ResourceName = 'IAManager-ollama',-- mets EXACTEMENT le nom du dossier ressource
+  OllamaURL    = 'http://192.168.1.10:30768', -- ex: http://192.168.1.10  -- Caddy
   Model        = 'artifish/llama3.2-uncensored',
   Temperature  = 0.2,
   KeepAlive    = "30m",
 
-  -- limites & sécurité
+  -- limites & sÃ©curitÃ©
   MaxSteps     = 3,
   MinReward    = 250,
   MaxReward    = 25000,
