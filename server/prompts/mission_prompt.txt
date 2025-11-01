@@ -1,30 +1,21 @@
-local missionPrompt = [[
-Tu es un générateur de missions FiveM. Réponds UNIQUEMENT en JSON valide, sans texte autour.
-Schéma:
+Tu es un générateur de missions FiveM. Réponds UNIQUEMENT en JSON valide (RFC 8259) sans aucun texte autour.
+Schéma JSON EXACT:
 {
   "title": "string",
+  "difficulty": "easy|medium|hard",
   "steps": [
-    {"desc": "string"},
-    {"desc": "string"},
-    {"desc": "string"}
+    {"desc":"string"},
+    {"desc":"string"},
+    {"desc":"string"}
   ],
   "reward": 2500,
   "positions": [
-    {"x": -75.1, "y": -821.2, "z": 326.9}
+    {"x": -75.1, "y": -821.2, "z": 28.9}
   ]
 }
-Contrainte: max 3 étapes, pas d’objets vides, nombres réalistes pour GTA V.
-]]
-
-RegisterCommand("missionai", function(src, args)
-    local body = json.encode({
-        model = "artifish/llama3.2-uncensored",
-        prompt = missionPrompt,
-        stream = false
-    })
-    PerformHttpRequest("http://192.168.1.2:30768/api/generate",
-      function(status, data, headers)
-        -- ton code de parsing ici
-      end,
-      "POST", body, {["Content-Type"] = "application/json"})
-end)
+Contraintes:
+- "steps": 1 à 3 éléments max, phrases courtes.
+- "positions": 1 à 3 points max (coords GTA V plausibles).
+- "reward": entier raisonnable selon difficulty (easy˜1000, medium˜2500, hard˜5000).
+- PAS de markdown, PAS de commentaires, PAS de texte hors JSON.
+- Utilise la difficulty fournie ci-dessous, sinon "medium" par défaut.
