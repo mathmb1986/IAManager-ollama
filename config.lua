@@ -1,6 +1,6 @@
 Config = {
   ResourceName = 'IAManager-ollama',-- mets EXACTEMENT le nom du dossier ressource
-  OllamaURL    = 'http://192.168.1.2:30768', -- ex: http://192.168.1.10  -- Caddy
+  OllamaURL    = 'http://192.168.1.10:30768', -- ex: http://192.168.1.10  -- Caddy
   Model        = 'artifish/llama3.2-uncensored',
 
   -- limites & sécurité
